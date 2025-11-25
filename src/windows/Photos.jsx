@@ -17,9 +17,11 @@ const Photos = () => {
 
     // Find the selected link's title for filtering
     const selectedCategory = photosLinks.find(link => link.id === selectedLink)?.title;
-    const filteredGallery = selectedCategory === "All Photos"
+    const filteredGallery = selectedCategory === "Library"
         ? gallery
-        : gallery.filter(photo => photo.category === selectedCategory);
+        : gallery.filter(photo => Array.isArray(photo.category)
+            ? photo.category.includes(selectedCategory)
+            : photo.category === selectedCategory);
 
     return (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden min-w-[320px] min-h-[400px] max-w-[90vw] max-h-[80vh] flex flex-col w-[700px] h-[500px]">

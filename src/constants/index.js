@@ -77,25 +77,40 @@ const dockApps = [
 const blogPosts = [
   {
     id: 1,
-    date: "Sep 2, 2025",
+    date: "june 4, 2025",
     title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+      "Hacking: Beyond the Hollywood Stereotype",
+    image: "/images/hello.png",
+    link: "https://havocsec.me/blog/post6/",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    date: "june 17, 2025",
+    title: "The 'Elite' Hacker Wannabes:Social Media Pressure",
+    image: "/images/elite.png",
+    link: "https://havocsec.me/chitchat/chat1/",
   },
-  {
+   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
-    image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    date: "Aug 26, 2025",
+    title: "The Good Side of Open Source: Why It Matters to You",
+    image: "/images/good.png",
+    link: "https://havocsec.me/blog/post11/",
+  },
+   {
+    id: 4,
+    date: "Jun 09, 2025",
+    title: "Top 10 Real-World Exploits That Started as CTF Challenges",
+    image: "/images/challs.png",
+    link: "https://havocsec.me/blog/post7/",
+  },
+  
+  {
+    id: 5,
+    date: "Nov 25, 2025",
+    title: "my ctf journey writeups and pentesting writeups",
+    image: "/images/ctfj.png",
+    link: "https://havocsec.me/pentesting/",
   },
 ];
 
@@ -136,33 +151,35 @@ const socials = [
   },
   {
     id: 2,
-    text: "Platform",
+    text: "Blog",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://havocsec.me",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://x.com/HavocRichie?t=smiK1Is6LAWykS9FlJg4eQ&s=09",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/daniel-wambua-a312b32b8/",
   },
+  {
+      id: 5,
+    text: "Linktree",
+    icon: "/icons/linktree.svg",
+    bg: "#05f619ff",
+    link: "https://linktree.havocsec.me",
+  }
 ];
 
 const photosLinks = [
-  {
-    id: 0,
-    icon: "/icons/image.svg",
-    title: "All Photos",
-  },
   {
     id: 1,
     icon: "/icons/gicon1.svg",
@@ -193,23 +210,23 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/gal1.png",
-    category: "Library",
+    img: "/images/ctf.JPG",
+    category: ["Library", "Favorites"],
   },
   {
     id: 2,
-    img: "/images/gal2.png",
-    category: "Memories",
+    img: "/images/hacking.JPG",
+    category: ["Memories", "Library"],
   },
   {
     id: 3,
-    img: "/images/gal3.png",
-    category: "Places",
+    img: "/images/present.JPG",
+    category: ["Places", "Favorites", "Library"],
   },
   {
     id: 4,
-    img: "/images/gal4.png",
-    category: "People",
+    img: "/images/hacking.JPG",
+    category: ["People", "Library"]
   },
   // Add more images and categories as needed
 ];
@@ -288,7 +305,7 @@ const WORK_LOCATION = {
     // ▶ Project 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "CyberHub",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -302,29 +319,29 @@ const WORK_LOCATION = {
           fileType: "txt",
           position: "top-5 right-10",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+            "->CyberHub is your all-in-one command center for cybersecurity.Instead of bouncing between random blogs, scattered tools, and outdated guides, you get everything in one clean, structured platform",
+            "->It cuts through the noise with curated resources, practical tools, and learning paths built for real attackers and defenders.",
+            "->Think of it like a personal security lab assistant: it points you toward what matters, helps you stay sharp, and accelerates your growth whether you're doing pentesting, CTFs, or building a cybersecurity career.",
+            "->Built with modern tech, it’s fast, simple to use, and optimized for learners who want to go deep, not waste time.",
           ],
         },
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
-          icon: "/images/safari.png",
+          name: "CyberHub",
+          icon: "/images/cyberhub.svg",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          href: "https://cyberhub.havocsec.tech",
           position: "top-20 left-20",
         },
         {
           id: 4,
-          name: "ai-resume-analyzer.png",
+          name: "CyberHub.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 left-80",
-          imageUrl: "/images/project-2.png",
+          imageUrl: "/images/cyberhub.png",
         },
         {
           id: 5,
@@ -332,7 +349,7 @@ const WORK_LOCATION = {
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://github.com/Daniel-wambua/cyberhub.git",
           position: "top-60 left-5",
         },
       ],
@@ -341,7 +358,7 @@ const WORK_LOCATION = {
     // ▶ Project 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: "Havoc_Linktree",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -349,35 +366,35 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "Havoc_Linktree Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
+            "->This is a Linktree alternative built for hackers, creators, and technical people who refuse to use boring link pages.",
+            "->Instead of pastel buttons and influencer aesthetics, you get a dark, cyber-themed hub that actually reflects your identity.",
+            "->Branded with a hacker vibe, glowing accents, and a security-lab aesthetic, it turns your link page into a statement instead of an afterthought.",
+            "->Built for performance, privacy, and customization, it gives you full control over your presence without locking you into someone else’s design system.",
           ],
         },
         {
           id: 2,
-          name: "food-delivery-app.com",
+          name: "havoc_linktree.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
+          href: "https://linktree.havocsec.me",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "food-delivery-app.png",
+          name: "havoc_linktree.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
+          imageUrl: "/images/mobile.jpeg",
         },
         {
           id: 5,
@@ -385,7 +402,7 @@ const WORK_LOCATION = {
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://linktree.havocsec.me",
           position: "top-60 right-20",
         },
       ],
@@ -407,7 +424,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/daniel2.png",
     },
     {
       id: 2,
@@ -416,7 +433,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/daniel.jpg",
     },
     {
       id: 3,
@@ -425,7 +442,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/hacking.JPG",
     },
     {
       id: 4,
@@ -435,10 +452,11 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/daniel2.png",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
+        "Hey! I’m Daniel 👋, a  Cybersecurity Engineer, CTF player and  a web developer who enjoys building sleek, interactive websites that actually work well and secure.",
+        "In web i specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
+        "In Cybersecurity am good at pentesting and securing systems",
         "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
         "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
       ],

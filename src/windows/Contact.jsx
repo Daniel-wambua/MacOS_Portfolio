@@ -11,11 +11,11 @@ const Contact = () => {
             </div>
             <div className="p-5">
                 <img
-                    src="images/adrian.jpg" alt="Adrian"
+                    src="images/daniel2.png" alt="Daniel"
                      className="w-20 rounded-full"
                 />
                 <h3>Let's Connect</h3>
-                <p>Got am idea? A bug to squash? or just wannna talk tech?
+                <p>Got an idea? A bug to squash? An hackathon  or just wanna talk tech?
                 I'm in.</p>
 
 
@@ -33,18 +33,7 @@ const Contact = () => {
                             </a>
                         </li>
                     ))}
-                    {/* Linktree */}
-                    <li style={{ backgroundColor: '#39e09b' }}>
-                        <a
-                            href="https://linktr.ee/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title="Linktree"
-                        >
-                            <img src="/icons/linktree.svg" alt="Linktree" className="size-5" />
-                            <p>Linktree</p>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </>

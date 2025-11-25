@@ -1,70 +1,175 @@
-# React + Vite
+<h1 align="center">Daniel Wambua - macOS Portfolio</h1>
+<p align="center">
+<a href="https://github.com/Daniel-wambua/macOS_portfolio"><img src="https://i.ibb.co/G4vGDwtD/cv-logo.png" width="48" /><br /></a>
+<i>This repo contains the source for my personal macOS-style portfolio</i>
+<br />
+<i>A React web app with authentic macOS UI, gallery, and window management</i>
+<br />
+<b>🌐 <a href="https://portfolio.havocsec.me">portfolio.havocsec.me</a></b> <br />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Motive
+To showcase my work, skills, and personality in a unique, interactive way.
+All content and UI are defined in code, with a focus on automation, maintainability, and a true macOS experience.
+I built this so I never have to use a boring template portfolio again.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<details>
+  <summary>About the Developer</summary>
 
-## React Compiler
+> **Professional Background**<br>
+> I'm an experienced, Principal-level full stack engineer with a passion for security, quality, performance, mentoring, technology and open source. I believe the best judge of a developer is their code, and while I cannot share proprietary work, I have many open source projects on my [GitHub](https://github.com/Daniel-wambua) and showcase my skills at [lab.havocsec.me](https://lab.havocsec.me).
+>
+> This portfolio project reflects my philosophy: why settle for generic when you can build something truly yours? I love automating, customizing, and making my work stand out.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+</details>
 
 ---
 
-## Troubleshooting: "Permission to ... denied to deploy key" when pushing
+## About
 
-If you see an error like:
+This portfolio is a macOS-inspired React app featuring:
+- Authentic window management (Finder, Photos, Contact, Resume, etc.)
+- Multi-category photo gallery with sidebar filtering
+- Responsive Dock, Navbar, and window controls
+- Mobile-first, fully responsive design
+- Contact window with Linktree and social links
+- All data (gallery, links, socials) in `/src/constants/index.js`
+- Zustand for window state management
+- Tailwind CSS for styling
+
+Why? ...Because why spend 30 minutes on a template, when you could spend 30 hours building something unique!
+
+---
+
+## Usage
+
+### Option #1 - Online
+1. Visit <a href="https://portfolio.havocsec.me">portfolio.havocsec.me</a> to see the live portfolio.
+
+### Option #2 - Local
+1. Clone the repo
+2. Run `npm install` or `yarn install`
+3. Run `npm run dev` or `yarn dev`
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+---
+
+## Project Structure
 
 ```
-ERROR: Permission to <owner>/<repo>.git denied to deploy key
-fatal: Could not read from remote repository.
+macOS_portfolio/
+├── public/                # Static assets
+├── src/
+│   ├── assets/            # Images and icons
+│   ├── components/        # UI components (WindowControls, Navbar, etc.)
+│   ├── constants/         # Data for nav, dock, gallery, socials
+│   ├── store/             # Zustand window state logic
+│   ├── windows/           # App windows (Finder, Photos, Contact, etc.)
+│   ├── App.jsx            # Main app shell
+│   ├── main.jsx           # Entry point
+│   └── index.css          # Tailwind CSS
+├── package.json
+├── vite.config.js
+└── README.md
+```
+---
+
+
+---
+
+## Flowchart
+
+```mermaid
+flowchart LR
+  A1([🚀 Start<br><sup>Clone repo & cd into it</sup>]) --> A2[📦 <code>npm install</code><br><sub>Install dependencies</sub>]
+  A2 --> A3[🛠 <code>npm run dev</code><br><sub>Start local dev server</sub>]
+  A3 --> A4([🌐 View at <code>localhost:5173</code>])
+  A4 --> B1{🖼️ Use Portfolio}
+  B1 --> B2[🪟 Open/close windows]
+  B1 --> B3[🖼️ Browse gallery]
+  B1 --> B4[📇 Contact window]
+  B1 --> B5[📱 Mobile responsive]
+  B1 --> B6[⚙️ Edit <code>src/constants/index.js</code>]
+  B6 --> B7([🔄 Custom content])
 ```
 
-it means you are authenticating to GitHub with an SSH deploy key. Deploy keys are attached to a single repository and are read‑only by default, so pushes are rejected unless the key has explicit write permission. Use one of the options below to resolve it.
+---
 
-### 1) Use a user SSH key with write access (recommended)
+## Screenshot
 
-- Check which user you authenticate as:
-  - ssh -T git@github.com
-- List keys loaded in your agent:
-  - ssh-add -l
-- If needed, generate a key and add it to your GitHub account (Settings → SSH and GPG keys):
-  - ssh-keygen -t ed25519 -C "you@example.com"
-  - ssh-add ~/.ssh/id_ed25519
-- Verify it shows your GitHub username when running ssh -T git@github.com.
-- Push again:
-  - git push -u origin <your-branch>
+<h3 align="center">Web 🌐</h3>
+<p align="center"><a href="https://portfolio.havocsec.me"><img width="650" src="public/images/preview.png" /></a></p>
 
-### 2) Enable write access on the deploy key (repo admins only)
+---
 
-In GitHub → Repository → Settings → Deploy keys, edit the key and check "Allow write access". This is only available if you control the repo and understand the security implications.
+## Attribution
+This project uses the following open-source libraries and resources:
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Heroicons](https://heroicons.com/)
 
-### 3) Push to your fork instead
+## Contributors
+- [Daniel Wambua](https://github.com/Daniel-wambua)
 
-- Fork the repository on GitHub.
-- Point origin (or add a new remote) to your fork and push:
-  - git remote set-url origin git@github.com:<your-username>/<repo>.git
-  - git push -u origin <your-branch>
-- Open a Pull Request from your fork back to the original repository.
+## Credits
+  [js-mastery](https://jsmastery.com/)for the idea and inspirations.
 
-### 4) Switch to HTTPS and use a Personal Access Token (PAT)
+---
 
-- Create a PAT with repo scope in your GitHub account.
-- Update the remote and push:
-  - git remote set-url origin https://github.com/<owner>/<repo>.git
-  - git push -u origin <your-branch>
-- When prompted for a password, use the PAT (GitHub ignores account passwords over HTTPS).
+## License
 
-### Quick diagnostics
+> _**[Daniel Wambua/macOS_portfolio](https://github.com/Daniel-wambua/macOS_portfolio)** is licensed under [MIT](https://github.com/Daniel-wambua/macOS_portfolio/blob/HEAD/LICENSE) © [Daniel Wambua](https://portfolio.havocsec.me) 2025._<br>
+> <sup align="right">For information, see <a href="https://tldrlegal.com/license/mit-license">TLDR Legal > MIT</a></sup>
 
-- Show remotes: git remote -v
-- Show current branch and status: git status
-- Test SSH auth: ssh -T git@github.com
+<details>
+<summary>Expand License</summary>
 
-Once your authentication method has write permissions, your push should succeed and your branch will appear on the remote.
+```
+The MIT License (MIT)
+Copyright (c)  Daniel Wambua <daniel@wambua.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal 
+in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sub-license, and/or sell 
+copies of the Software, and to permit persons to whom the Software is furnished 
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+</details>
+
+<!-- License + Copyright -->
+<p  align="center">
+  <i>© <a href="https://danielwambua.dev">Daniel Wambua</a> 2025</i><br>
+  <i>Licensed under <a href="https://gist.github.com/Daniel-wambua/143d2ee01ccc5c052a17">MIT</a></i><br>
+  <a href="https://github.com/Daniel-wambua"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
+  <sup>Thanks for visiting :)</sup>
+</p>
+
+<!-- Dinosaur -->
+<!-- 
+                        . - ~ ~ ~ - .
+      ..     _      .-~               ~-.
+     //|     \ `..~                      `.
+    || |      }  }              /       \  \
+(\   \\ \~^..'                 |         }  \
+ \`.-~  o      /       }       |        /    \
+ (__          |       /        |       /      `.
+  `- - ~ ~ -._|      /_ - ~ ~ ^|      /- _      `.
+              |     /          |     /     ~-.     ~- _
+              |_____|          |_____|         ~ - . _ _~_-_
+-->
+
