@@ -313,7 +313,7 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "CyberHub.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
