@@ -1,0 +1,12 @@
+# Ignore development and config files not needed for deployment
+node_modules
+src
+README*
+README.md
+README_NEW.md
+README_PRO.md
+*.log
+.git
+.gitignore
+.vscode
+.env*
