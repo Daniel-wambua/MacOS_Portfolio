@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 
-const WindowWrapper = (component, windowKey) => {
+const WindowWrapper = (Component, windowKey) => {
     const Wrapped = (props) => {
         const { focusWindow, windows } = useWindowStore();
         const { isOpen, zIndex } = windows[windowKey];
@@ -23,15 +23,12 @@ const WindowWrapper = (component, windowKey) => {
             );
         }, [isOpen]);
 
-
         useGSAP(() => {
             const el = ref.current;
             if (!el || !isOpen) return;
             const [instance] = Draggable.create(el, { onPress: () => focusWindow(windowKey) });
             return () => instance && instance.kill();
         }, [isOpen]);
-
-
 
         if (!isOpen) return null;
 
@@ -42,11 +39,11 @@ const WindowWrapper = (component, windowKey) => {
                 style={{ zIndex }}
                 className="absolute"
             >
-                {component && component(props)}
+                <Component {...props} />
             </section>
         );
     };
-    Wrapped.displayName = `WindowWrapper(${component.displayName || component.name || 'Component'})`;
+    Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
 
     return Wrapped;
 };

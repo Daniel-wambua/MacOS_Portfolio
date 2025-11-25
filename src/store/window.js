@@ -2,9 +2,9 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { WINDOW_CONFIG, INITIAL_Z_INDEX } from "#constants/index.js";
 
-const useWindowStore =create(
+const useWindowStore = create(
     immer((set) => ({
-    windows: WINDOW_CONFIG,
+        windows: structuredClone ? structuredClone(WINDOW_CONFIG) : JSON.parse(JSON.stringify(WINDOW_CONFIG)),
         nextZIndex: INITIAL_Z_INDEX + 1,
 
         openWindow: (windowKey,data =null) =>
