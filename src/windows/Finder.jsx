@@ -9,6 +9,14 @@ import useWindowStore from "#store/window.js";
 const Finder = () => {
     const { openWindow } = useWindowStore();
     const { activeLocation, setActiveLocation } = useLocationStore();
+    const locationValues = Object.values(locations);
+
+    // mobile: keep a selected id for the dropdown
+    const handleMobileSelect = (e) => {
+        const id = Number(e.target.value);
+        const loc = locationValues.find((l) => l.id === id);
+        if (loc) setActiveLocation(loc);
+    };
     const renderList = (name, items) => {
         const safeItems = Array.isArray(items) ? items : [];
         return (
@@ -48,12 +56,25 @@ const Finder = () => {
     };
     return (
        <>
-            <div id="window-header">
+            <div id="window-header" className="flex items-center gap-2">
                 <WindowControls target="finder" />
                 <Search className="icon" />
+                {/* mobile select to pick active location */}
+                <div className="sm:hidden ml-2 flex-1">
+                    <select
+                        value={activeLocation?.id}
+                        onChange={handleMobileSelect}
+                        className="w-full p-2 rounded-md border"
+                        aria-label="Select location"
+                    >
+                        {locationValues.map((loc) => (
+                            <option key={loc.id} value={loc.id}>{loc.name}</option>
+                        ))}
+                    </select>
+                </div>
             </div>
            <div className="bg-white flex h-full">
-               <div className="sidebar">
+               <div className="sidebar hidden sm:block">
                    <div>
                        {renderList('Favourites', Object.values(locations))}
                        {renderList('Work', (locations.work && Array.isArray(locations.work.children)) ? locations.work.children : [])}

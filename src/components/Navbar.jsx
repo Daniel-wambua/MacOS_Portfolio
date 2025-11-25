@@ -8,15 +8,15 @@ const Navbar = () => {
     <div>
         <img src="/images/logo.svg" alt="logo"/>
         <p className="font-bold">Daniel's Portfolio</p>
-
         <ul>
             {navLinks.map(({ id,name ,type}) => (
                 <li key={id} onClick={() => openWindow(type)}>
                     <p>{name}</p>
                 </li>
             ))}
-            
-        </ul> 
+        </ul>
+        {/* mobile menu button to open Finder */}
+        <button className="sm:hidden ml-2 p-2 rounded-md bg-white/30" onClick={() => openWindow('finder')}>Menu</button>
         </div>
         <div>
             <ul>

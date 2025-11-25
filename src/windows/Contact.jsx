@@ -24,17 +24,27 @@ const Contact = () => {
                     {socials.map(({ id, bg, link,icon,text }) => (
                         <li key={id}
                         style = {{backgroundColor: bg}}>
-                        <a>
                             <a href={link}
                                target="_blank"
                                rel="noopener noreferrer"
                                title={text}>
-                        <img src={icon} alt={text} className="size-5" />
-                        <p>{text}</p>
+                                <img src={icon} alt={text} className="size-5" />
+                                <p>{text}</p>
                             </a>
-                        </a>
                         </li>
                     ))}
+                    {/* Linktree */}
+                    <li style={{ backgroundColor: '#39e09b' }}>
+                        <a
+                            href="https://linktr.ee/yourusername"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Linktree"
+                        >
+                            <img src="/icons/linktree.svg" alt="Linktree" className="size-5" />
+                            <p>Linktree</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </>

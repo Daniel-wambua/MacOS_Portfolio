@@ -73,35 +73,48 @@ const Dock = () => {
     };
 
 
-  return (<section id="dock">
-    <div ref={dockRef} className="dock-container">
-      {dockApps.map (({id , name, icon, canOpen}) => (
-        <div key={id} className ="relative flex justify-center"> 
-        <button
-        type="button"
-        className="dock-icon"
-        aria-label={name}
-        data-tooltip-id="dock-tooltip"
-        data-tooltip-content={name}
-        data-tooltip-delay-show={150}
-        disabled={!canOpen}
-        onClick={() => toggleApp({id, canOpen})}
-        >
-          <img
-          src={`/images/${icon}`}
-          alt={name}
-          loading="lazy"
-          className= {canOpen ? "" : "opacity-60"}
-          />
-        </button>
-
-        </div>
-      ))}
-      <Tooltip id="dock-tooltip" place= "top" className="tooltip"/>
-    </div>
-  </section>
-    
-  )
+  return (
+    <section id="dock" className="max-sm:hidden">
+      <div ref={dockRef} className="dock-container">
+        {dockApps.map(({ id, name, icon, canOpen }) => {
+          const win = windows[id];
+          const isActive = win?.isOpen;
+          return (
+            <div key={id} className="relative flex justify-center">
+              <button
+                type="button"
+                className="dock-icon"
+                aria-label={name}
+                data-tooltip-id="dock-tooltip"
+                data-tooltip-content={name}
+                data-tooltip-delay-show={150}
+                disabled={!canOpen}
+                onClick={() => toggleApp({ id, canOpen })}
+              >
+                <img
+                  src={`/images/${icon}`}
+                  alt={name}
+                  loading="lazy"
+                  className={canOpen ? "" : "opacity-60"}
+                />
+              </button>
+              {/* Show dot only if open */}
+              {canOpen && (
+                <span
+                  className={`absolute left-1/2 -translate-x-1/2 bottom-0 mb-1 w-2 h-2 rounded-full transition-all
+                    ${isActive ? 'bg-blue-500 scale-100' : 'scale-0'}
+                    shadow-md
+                  `}
+                  style={{ pointerEvents: 'none' }}
+                />
+              )}
+            </div>
+          );
+        })}
+        <Tooltip id="dock-tooltip" place="top" className="tooltip" />
+      </div>
+    </section>
+  );
 }
 
 export default Dock;

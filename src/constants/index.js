@@ -132,7 +132,7 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/Daniel-wambua",
   },
   {
     id: 2,
@@ -158,6 +158,11 @@ const socials = [
 ];
 
 const photosLinks = [
+  {
+    id: 0,
+    icon: "/icons/image.svg",
+    title: "All Photos",
+  },
   {
     id: 1,
     icon: "/icons/gicon1.svg",
@@ -189,19 +194,24 @@ const gallery = [
   {
     id: 1,
     img: "/images/gal1.png",
+    category: "Library",
   },
   {
     id: 2,
     img: "/images/gal2.png",
+    category: "Memories",
   },
   {
     id: 3,
     img: "/images/gal3.png",
+    category: "Places",
   },
   {
     id: 4,
     img: "/images/gal4.png",
+    category: "People",
   },
+  // Add more images and categories as needed
 ];
 
 export {

@@ -30,14 +30,19 @@ const WindowWrapper = (Component, windowKey) => {
             return () => instance && instance.kill();
         }, [isOpen]);
 
+        // Hide if not open
         if (!isOpen) return null;
+
+        // Default window style
+        let style = { zIndex, minWidth: 320, minHeight: 300 };
+        let className = "absolute group bg-white rounded-xl shadow-lg max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 max-sm:overflow-auto";
 
         return (
             <section
                 id={windowKey}
                 ref={ref}
-                style={{ zIndex }}
-                className="absolute"
+                style={style}
+                className={className}
             >
                 <Component {...props} />
             </section>
