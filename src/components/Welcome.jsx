@@ -75,7 +75,16 @@ const Welcome = () => {
     }, []);
 
   return (
-   <section id="welcome" className="max-sm:pt-10 max-sm:px-2">
+   <section id="welcome" className="max-sm:px-2">
+    {/* Mobile notice: fixed at the very top; space appears BELOW it */}
+    <div className="small-screen">
+        <p className="text-center text-white font-mono text-base leading-6 tracking-wide">
+          This PortFolio is designed for Desktop/Tablet screens only!
+        </p>
+    </div>
+    {/* Spacer under fixed banner (slightly reduced so it doesn't cover the topbar) */}
+    <div className="sm:hidden h-12" />
+
     <p ref={subtitleRef} className="max-sm:text-lg">
       {renderText(
         "Hey,I'm Daniel! Welcome to my", "text-3xl font-georama max-sm:text-lg", 100,
@@ -85,28 +94,6 @@ const Welcome = () => {
       {renderText(
         "Portfolio", "text-9xl italic font-georama max-sm:text-5xl", 400)}
     </h1>
-    {/* Mobile helper: show quick actions instead of blocking message */}
-    <div className="sm:hidden mt-6 space-y-3">
-      <p className="text-sm text-gray-600">Tip: On phones, apps open full-screen. Use the Dock or quick actions below:</p>
-      <div className="flex gap-3">
-        <button
-          type="button"
-          onClick={() => openWindow('terminal')}
-          className="px-4 py-2 rounded-md bg-black text-white text-sm active:scale-95"
-          aria-label="Open Tech Stack"
-        >
-          Open Tech Stack
-        </button>
-        <button
-          type="button"
-          onClick={() => openWindow('resume')}
-          className="px-4 py-2 rounded-md bg-gray-200 text-sm active:scale-95"
-          aria-label="Open Resume"
-        >
-          Open Resume
-        </button>
-      </div>
-    </div>
   </section>
   );
 };

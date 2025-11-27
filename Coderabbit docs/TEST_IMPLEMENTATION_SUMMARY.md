@@ -277,9 +277,9 @@ it('should have valid structure', () => {
 ## Resources
 
 ### Documentation
-- [TESTING.md](./TESTING.md) - Detailed testing guide
-- [TEST_SETUP.md](./TEST_SETUP.md) - Setup instructions
-- [TEST_SUMMARY.md](./TEST_SUMMARY.md) - Coverage details
+- [TESTING.md](../TESTING.md) - Detailed testing guide
+- [TEST_SETUP.md](../TEST_SETUP.md) - Setup instructions
+- [TEST_SUMMARY.md](../TEST_SUMMARY.md) - Coverage details
 
 ### External Resources
 - [Vitest](https://vitest.dev/)
