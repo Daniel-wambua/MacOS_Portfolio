@@ -27,7 +27,7 @@ const Resume = () => {
         return iOS || iPadOS13Plus;
     };
 
-    const downloadResume = async () => {
+    const downloadResume = () => {
         try {
             // iOS Safari has limited support for programmatic downloads; open in new tab as a fallback
             if (isIOS()) {
@@ -75,7 +75,7 @@ const Resume = () => {
                 </div>
             </div>
 
-            <Document file="files/resume.pdf">
+            <Document file={filePath}>
                 <Page pageNumber={1}
                       renderTextLayer
                       renderAnnotationLayer
