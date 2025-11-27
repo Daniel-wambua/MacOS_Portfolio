@@ -51,20 +51,34 @@ const WindowWrapper = (Component, windowKey) => {
         // Default window style
         let style = isDesktop ? { zIndex, minWidth: 320, minHeight: 300 } : { zIndex };
         let className = [
-            // Desktop window
+            // Desktop window (floating)
             "absolute group bg-white rounded-xl shadow-lg",
-            // Mobile: take over the screen safely
-            // Also enforce full-screen on touch devices by adding inline styles below
-            "max-sm:fixed max-sm:inset-0 max-sm:w-screen max-sm:h-[100dvh] max-sm:rounded-none max-sm:overflow-auto",
-            // Respect notches and system bars
-            "max-sm:pt-[env(safe-area-inset-top)] max-sm:pb-[env(safe-area-inset-bottom)] max-sm:pl-[env(safe-area-inset-left)] max-sm:pr-[env(safe-area-inset-right)]"
+            // Mobile: floating panel (not full-bleed). We avoid enforcing full-screen via classes;
+            // inline styles below will constrain the window within the viewport with margins
+            // and safe-area offsets.
         ].join(' ');
 
         const section = (
             <section
                 id={windowKey}
                 ref={ref}
-                style={isTouch ? { ...style, position: 'fixed', inset: 0, width: '100vw', height: '100dvh', borderRadius: 0, overflow: 'auto', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)', paddingLeft: 'env(safe-area-inset-left)', paddingRight: 'env(safe-area-inset-right)' } : style}
+                style={isTouch ? {
+                    ...style,
+                    position: 'fixed',
+                    // Keep comfortable margins from edges and respect safe areas
+                    top: 'calc(env(safe-area-inset-top) + 12px)',
+                    bottom: 'calc(env(safe-area-inset-bottom) + 12px)',
+                    left: '12px',
+                    right: '12px',
+                    // Constrain size so it never expands full-screen edge-to-edge
+                    width: 'auto',
+                    maxWidth: 'calc(100vw - 24px)',
+                    height: 'auto',
+                    maxHeight: 'calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px)',
+                    borderRadius: 12,
+                    overflow: 'auto',
+                    backgroundColor: 'white'
+                } : style}
                 className={className}
             >
                 <Component {...props} />
