@@ -16,19 +16,35 @@ const Home = () => {
         openWindow("finder");
     };
     useGSAP(() =>{
+        // Enable dragging only on non-touch desktop devices
+        const isTouch = (typeof window !== 'undefined') && (
+            'ontouchstart' in window ||
+            (typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0) ||
+            (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches)
+        );
+        if (isTouch) return;
         Draggable.create(".folder");
     },[]);
     return (
         <section id="home">
             <ul>
                 {projects.map((project) => (
-                    <li key={project.id}
-                        className={clsx("group folder",
-                            project.windowPosition)}
-                    onClick={() => handleOpenProjectFinder(project)}
+                    <li
+                        key={project.id}
+                        className={clsx(
+                            "group folder select-none",
+                            project.windowPosition
+                        )}
                     >
-                        <img src="/images/folder.png" alt={project.name} />
-                        <p>{project.name}</p>
+                        <button
+                            type="button"
+                            onClick={() => handleOpenProjectFinder(project)}
+                            className="flex flex-col items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 active:scale-95 transition p-2 min-w-[44px] min-h-[44px]"
+                            aria-label={`Open ${project.name}`}
+                        >
+                            <img src="/images/folder.png" alt="" aria-hidden="true" draggable={false} />
+                            <p>{project.name}</p>
+                        </button>
                     </li>
                 ))}
             </ul>

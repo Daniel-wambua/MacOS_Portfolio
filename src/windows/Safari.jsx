@@ -3,15 +3,35 @@ import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import { MoveRight, PanelLeft, ChevronLeft, ChevronRight, ShieldHalf, Search, Share, Plus, Copy } from "lucide-react";
 import { blogPosts } from "#constants/index.js";
 
+const TouchButton = ({ ariaLabel, title, onClick, children }) => (
+    <button
+        type="button"
+        aria-label={ariaLabel}
+        title={title || ariaLabel}
+        onClick={onClick}
+        className="inline-flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 active:scale-95 transition p-2 min-w-[44px] min-h-[44px]"
+    >
+        {children}
+    </button>
+);
+
 const Safari = () => {
     return (
         <>
             <div id="window-header">
                 <WindowControls target="safari" />
-                <PanelLeft className="ml-10 icon" />
+                <div className="ml-10 flex items-center">
+                    <TouchButton ariaLabel="Toggle sidebar" onClick={() => console.log('Toggle sidebar')}>
+                        <PanelLeft className="icon" />
+                    </TouchButton>
+                </div>
                 <div className="flex items-center gap-1 ml-5">
-                    <ChevronLeft className="icon" />
-                    <ChevronRight className="icon" />
+                    <TouchButton ariaLabel="Go back" onClick={() => console.log('Back')}>
+                        <ChevronLeft className="icon" />
+                    </TouchButton>
+                    <TouchButton ariaLabel="Go forward" onClick={() => console.log('Forward')}>
+                        <ChevronRight className="icon" />
+                    </TouchButton>
                 </div>
                 <div className="flex-1 flex-center gap-3">
                     <ShieldHalf className="icon" />
@@ -20,10 +40,16 @@ const Safari = () => {
                         <input type="text" placeholder="Search or enter website name" className="flex-1" />
                     </div>
                 </div>
-                <div className="flex items-center gap-5">
-                    <Share className="icon" />
-                    <Plus className="icon" />
-                    <Copy className="icon" />
+                <div className="flex items-center gap-2">
+                    <TouchButton ariaLabel="Share" onClick={() => console.log('Share')}>
+                        <Share className="icon" />
+                    </TouchButton>
+                    <TouchButton ariaLabel="New tab" onClick={() => console.log('New tab')}>
+                        <Plus className="icon" />
+                    </TouchButton>
+                    <TouchButton ariaLabel="Copy" onClick={() => console.log('Copy')}>
+                        <Copy className="icon" />
+                    </TouchButton>
                 </div>
             </div>
 
