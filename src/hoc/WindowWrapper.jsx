@@ -1,5 +1,6 @@
 import useWindowStore from "#store/window.js";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
+import { createPortal } from "react-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
@@ -35,22 +36,24 @@ const WindowWrapper = (Component, windowKey) => {
             return () => instance && instance.kill();
         }, [isOpen]);
 
+        // Determine desktop vs mobile (no hook to avoid hook order issues)
+        const isDesktop = (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(min-width: 640px)').matches : true);
+
         // Hide if not open
         if (!isOpen) return null;
 
         // Default window style
-        const isDesktop = useMemo(() => (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(min-width: 640px)').matches : true), []);
         let style = isDesktop ? { zIndex, minWidth: 320, minHeight: 300 } : { zIndex };
         let className = [
             // Desktop window
             "absolute group bg-white rounded-xl shadow-lg",
             // Mobile: take over the screen safely
-            "max-sm:fixed max-sm:inset-0 max-sm:w-screen max-sm:h-[100dvh] max-sm:rounded-none max-sm:z-40 max-sm:overflow-auto",
+            "max-sm:fixed max-sm:inset-0 max-sm:w-screen max-sm:h-[100dvh] max-sm:rounded-none max-sm:overflow-auto",
             // Respect notches and system bars
             "max-sm:pt-[env(safe-area-inset-top)] max-sm:pb-[env(safe-area-inset-bottom)] max-sm:pl-[env(safe-area-inset-left)] max-sm:pr-[env(safe-area-inset-right)]"
         ].join(' ');
 
-        return (
+        const section = (
             <section
                 id={windowKey}
                 ref={ref}
@@ -60,6 +63,13 @@ const WindowWrapper = (Component, windowKey) => {
                 <Component {...props} />
             </section>
         );
+
+        // Render into a portal to escape any unexpected stacking contexts
+        // This ensures windows appear above wallpaper or other layers on mobile
+        if (typeof document !== 'undefined') {
+            return createPortal(section, document.body);
+        }
+        return section;
     };
     Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || 'Component'})`;
 
