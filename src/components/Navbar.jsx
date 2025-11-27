@@ -15,8 +15,7 @@ const Navbar = () => {
                 </li>
             ))}
         </ul>
-        {/* mobile menu button to open Finder */}
-        <button className="sm:hidden ml-2 p-2 rounded-md bg-white/30" onClick={() => openWindow('finder')}>Menu</button>
+        {/* Removed mobile-only text button that looked out of place on the top bar */}
         </div>
         <div>
             <ul>

@@ -49,7 +49,20 @@ const WindowWrapper = (Component, windowKey) => {
         if (!isOpen) return null;
 
         // Default window style
-        let style = isDesktop ? { zIndex, minWidth: 320, minHeight: 300 } : { zIndex };
+        // Add scrollbars automatically when content overflows, on BOTH desktop and touch.
+        // On desktop, also constrain max height so long content becomes scrollable within the viewport.
+        let style = isDesktop
+            ? {
+                zIndex,
+                minWidth: 320,
+                minHeight: 300,
+                // Constrain height within viewport so content can scroll
+                maxHeight: 'calc(100dvh - 80px)',
+                overflow: 'auto',
+                WebkitOverflowScrolling: 'touch',
+                overscrollBehavior: 'contain',
+            }
+            : { zIndex };
         let className = [
             // Desktop window (floating)
             "absolute group bg-white rounded-xl shadow-lg",
