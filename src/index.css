@@ -73,7 +73,7 @@ body {
     .small-screen {
     /* Place the warning just BELOW the top bar on small screens */
     /* Keep it under the navbar in stacking order so it never covers it */
-    @apply sm:hidden fixed inset-x-2 top-14 bg-red-300/20 backdrop-blur-lg p-2 rounded-md z-40;
+    @apply sm:hidden fixed inset-x-2 top-16 bg-red-300/20 backdrop-blur-lg p-2 rounded-md z-40;
 
     /* Slightly smaller text and tighter vertical padding to make it look compact */
     p {

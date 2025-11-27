@@ -82,8 +82,8 @@ const Welcome = () => {
           This PortFolio is designed for Desktop/Tablet screens only!
         </p>
     </div>
-    {/* Spacer under fixed banner (slightly reduced so it doesn't cover the topbar) */}
-    <div className="sm:hidden h-12" />
+    {/* Spacer under fixed banner — match the banner's new offset so content doesn't overlap */}
+    <div className="sm:hidden h-16" />
 
     <p ref={subtitleRef} className="max-sm:text-lg">
       {renderText(
