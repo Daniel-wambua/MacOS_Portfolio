@@ -1,5 +1,5 @@
 import useWindowStore from "#store/window.js";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
@@ -10,6 +10,7 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex } = windows[windowKey];
         const ref = useRef(null);
 
+        // Animate in when opened
         useGSAP(() => {
             const el = ref.current;
             if (!el || !isOpen) return;
@@ -23,9 +24,13 @@ const WindowWrapper = (Component, windowKey) => {
             );
         }, [isOpen]);
 
+        // Make draggable on desktop only (touch devices use full-screen, no drag)
         useGSAP(() => {
             const el = ref.current;
             if (!el || !isOpen) return;
+            const isDesktop = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(min-width: 640px)').matches;
+            if (!isDesktop) return;
+
             const [instance] = Draggable.create(el, { onPress: () => focusWindow(windowKey) });
             return () => instance && instance.kill();
         }, [isOpen]);
@@ -34,8 +39,16 @@ const WindowWrapper = (Component, windowKey) => {
         if (!isOpen) return null;
 
         // Default window style
-        let style = { zIndex, minWidth: 320, minHeight: 300 };
-        let className = "absolute group bg-white rounded-xl shadow-lg max-sm:fixed max-sm:inset-0 max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:z-40 max-sm:overflow-auto";
+        const isDesktop = useMemo(() => (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(min-width: 640px)').matches : true), []);
+        let style = isDesktop ? { zIndex, minWidth: 320, minHeight: 300 } : { zIndex };
+        let className = [
+            // Desktop window
+            "absolute group bg-white rounded-xl shadow-lg",
+            // Mobile: take over the screen safely
+            "max-sm:fixed max-sm:inset-0 max-sm:w-screen max-sm:h-[100dvh] max-sm:rounded-none max-sm:z-40 max-sm:overflow-auto",
+            // Respect notches and system bars
+            "max-sm:pt-[env(safe-area-inset-top)] max-sm:pb-[env(safe-area-inset-bottom)] max-sm:pl-[env(safe-area-inset-left)] max-sm:pr-[env(safe-area-inset-right)]"
+        ].join(' ');
 
         return (
             <section

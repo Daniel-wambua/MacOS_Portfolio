@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import useWindowStore from "#store/window.js";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -59,6 +60,7 @@ const renderText = (text,  className, baseWeight = 400) => {
   };
 
 const Welcome = () => {
+    const { openWindow } = useWindowStore();
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
 
@@ -83,8 +85,27 @@ const Welcome = () => {
       {renderText(
         "Portfolio", "text-9xl italic font-georama max-sm:text-5xl", 400)}
     </h1>
-    <div className="small-screen">
-      <p>This portfolio is designed for Desktop/Tablet screens only</p>
+    {/* Mobile helper: show quick actions instead of blocking message */}
+    <div className="sm:hidden mt-6 space-y-3">
+      <p className="text-sm text-gray-600">Tip: On phones, apps open full-screen. Use the Dock or quick actions below:</p>
+      <div className="flex gap-3">
+        <button
+          type="button"
+          onClick={() => openWindow('terminal')}
+          className="px-4 py-2 rounded-md bg-black text-white text-sm active:scale-95"
+          aria-label="Open Tech Stack"
+        >
+          Open Tech Stack
+        </button>
+        <button
+          type="button"
+          onClick={() => openWindow('resume')}
+          className="px-4 py-2 rounded-md bg-gray-200 text-sm active:scale-95"
+          aria-label="Open Resume"
+        >
+          Open Resume
+        </button>
+      </div>
     </div>
   </section>
   );
