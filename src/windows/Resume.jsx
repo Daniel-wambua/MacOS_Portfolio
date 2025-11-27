@@ -1,8 +1,7 @@
 import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import {WindowControls} from "#components/index.js";
-import {Download} from "lucide-react";
+import {Download, ExternalLink} from "lucide-react";
 import {Document, Page, pdfjs} from 'react-pdf';
-import { useEffect, useState } from 'react';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -10,18 +9,43 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.vers
 
 
 const Resume = () => {
-    const [pageWidth, setPageWidth] = useState(undefined);
+    const filePath = "/files/resume.pdf";
 
-    useEffect(() => {
-        const update = () => {
-            // Use container width or viewport width for mobile
-            const vw = Math.min(window.innerWidth, 1024);
-            setPageWidth(vw - 24); // a little padding
-        };
-        update();
-        window.addEventListener('resize', update);
-        return () => window.removeEventListener('resize', update);
-    }, []);
+    const openInNewTab = () => {
+        try {
+            window.open(filePath, "_blank", "noopener,noreferrer");
+        } catch (e) {
+            console.warn("Failed to open in new tab", e);
+        }
+    };
+
+    const isIOS = () => {
+        if (typeof navigator === 'undefined') return false;
+        const ua = navigator.userAgent || navigator.vendor || "";
+        const iOS = /iPad|iPhone|iPod/i.test(ua);
+        const iPadOS13Plus = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+        return iOS || iPadOS13Plus;
+    };
+
+    const downloadResume = async () => {
+        try {
+            // iOS Safari has limited support for programmatic downloads; open in new tab as a fallback
+            if (isIOS()) {
+                openInNewTab();
+                return;
+            }
+
+            const a = document.createElement('a');
+            a.href = filePath;
+            a.download = 'resume.pdf';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } catch (e) {
+            console.warn('Download failed, falling back to new tab', e);
+            openInNewTab();
+        }
+    };
 
     return (
         <>
@@ -29,24 +53,34 @@ const Resume = () => {
                 <WindowControls target="resume" />
                 <h2>Resume.pdf</h2>
 
-                <a href="/files/resume.pdf"
-                   download="resume.pdf"
-                   className="cursor-pointer"
-                   title="Download resume">
-
-                    <Download className="icon" />
-                </a>
+                <div className="ml-auto flex items-center gap-1 max-sm:gap-2">
+                    <button
+                        type="button"
+                        onClick={openInNewTab}
+                        aria-label="Open resume in new tab"
+                        title="Open in new tab"
+                        className="inline-flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 active:scale-95 transition p-1 max-sm:p-2 max-sm:min-w-[44px] max-sm:min-h-[44px]"
+                    >
+                        <ExternalLink className="icon" />
+                    </button>
+                    <button
+                        type="button"
+                        onClick={downloadResume}
+                        aria-label="Download resume"
+                        title="Download"
+                        className="inline-flex items-center justify-center rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 active:scale-95 transition p-1 max-sm:p-2 max-sm:min-w-[44px] max-sm:min-h-[44px]"
+                    >
+                        <Download className="icon" />
+                    </button>
+                </div>
             </div>
 
-            <div className="px-3 max-sm:px-2">
-                <Document file="files/resume.pdf">
-                    <Page pageNumber={1}
-                          renderTextLayer
-                          renderAnnotationLayer
-                          width={pageWidth}
-                    />
-                </Document>
-            </div>
+            <Document file="files/resume.pdf">
+                <Page pageNumber={1}
+                      renderTextLayer
+                      renderAnnotationLayer
+                />
+            </Document>
         </>
     );
 };

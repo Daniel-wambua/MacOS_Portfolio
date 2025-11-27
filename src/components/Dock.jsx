@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import {Tooltip} from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 import { dockApps } from "#constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -13,7 +13,7 @@ const Dock = () => {
     const dock =dockRef.current;
     if(!dock) return;
 
-    const icons =dock.querySelectorAll(".dock-icon");
+    const icons = dock.querySelectorAll(".dock-icon");
 
 
     const animateIcons = (mouseX) => {
@@ -74,8 +74,15 @@ const Dock = () => {
 
 
   return (
-    <section id="dock" className="max-sm:hidden">
-      <div ref={dockRef} className="dock-container">
+    <section
+      id="dock"
+      // Restore previous clean behavior: hide on small screens, no fixed stacking
+      className="max-sm:hidden"
+    >
+      <div
+        ref={dockRef}
+        className="dock-container"
+      >
         {dockApps.map(({ id, name, icon, canOpen }) => {
           const win = windows[id];
           const isActive = win?.isOpen;

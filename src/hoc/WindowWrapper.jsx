@@ -11,6 +11,16 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex } = windows[windowKey];
         const ref = useRef(null);
 
+        // Determine desktop vs touch device (no hook to avoid hook order issues)
+        // Treat touch devices as "mobile" even when the browser requests Desktop Site (iOS Safari),
+        // so windows still open full-screen and dragging is disabled.
+        const isTouch = (typeof window !== 'undefined') && (
+            'ontouchstart' in window ||
+            (typeof navigator !== 'undefined' && navigator.maxTouchPoints > 0) ||
+            (window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches)
+        );
+        const isDesktop = !isTouch;
+
         // Animate in when opened
         useGSAP(() => {
             const el = ref.current;
@@ -29,15 +39,11 @@ const WindowWrapper = (Component, windowKey) => {
         useGSAP(() => {
             const el = ref.current;
             if (!el || !isOpen) return;
-            const isDesktop = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(min-width: 640px)').matches;
             if (!isDesktop) return;
 
             const [instance] = Draggable.create(el, { onPress: () => focusWindow(windowKey) });
             return () => instance && instance.kill();
         }, [isOpen]);
-
-        // Determine desktop vs mobile (no hook to avoid hook order issues)
-        const isDesktop = (typeof window !== 'undefined' && window.matchMedia ? window.matchMedia('(min-width: 640px)').matches : true);
 
         // Hide if not open
         if (!isOpen) return null;
@@ -48,6 +54,7 @@ const WindowWrapper = (Component, windowKey) => {
             // Desktop window
             "absolute group bg-white rounded-xl shadow-lg",
             // Mobile: take over the screen safely
+            // Also enforce full-screen on touch devices by adding inline styles below
             "max-sm:fixed max-sm:inset-0 max-sm:w-screen max-sm:h-[100dvh] max-sm:rounded-none max-sm:overflow-auto",
             // Respect notches and system bars
             "max-sm:pt-[env(safe-area-inset-top)] max-sm:pb-[env(safe-area-inset-bottom)] max-sm:pl-[env(safe-area-inset-left)] max-sm:pr-[env(safe-area-inset-right)]"
@@ -57,7 +64,7 @@ const WindowWrapper = (Component, windowKey) => {
             <section
                 id={windowKey}
                 ref={ref}
-                style={style}
+                style={isTouch ? { ...style, position: 'fixed', inset: 0, width: '100vw', height: '100dvh', borderRadius: 0, overflow: 'auto', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)', paddingLeft: 'env(safe-area-inset-left)', paddingRight: 'env(safe-area-inset-right)' } : style}
                 className={className}
             >
                 <Component {...props} />
