@@ -37,7 +37,8 @@ body {
   }
 
   nav {
-    @apply flex justify-between items-center bg-white/50 backdrop-blur-3xl p-2 px-5 select-none;
+    /* Ensure the topbar is always above in-app overlays/banners */
+    @apply relative flex justify-between items-center bg-white/50 backdrop-blur-3xl p-2 px-5 select-none z-50;
 
     div {
       @apply flex items-center max-sm:w-full max-sm:justify-center gap-5;
@@ -70,16 +71,16 @@ body {
     @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
 
     .small-screen {
-      /* Reduce the gap above the warning so it sits nearer the topbar */
-      /* Nudge below the topbar to avoid overlap */
-      @apply sm:hidden fixed inset-x-2 top-12 bg-red-300/20 backdrop-blur-lg p-2 rounded-md z-50;
+    /* Place the warning just BELOW the top bar on small screens */
+    /* Keep it under the navbar in stacking order so it never covers it */
+    @apply sm:hidden fixed inset-x-2 top-14 bg-red-300/20 backdrop-blur-lg p-2 rounded-md z-40;
 
-      /* Slightly smaller text and tighter vertical padding to make it look compact */
-      p {
-        @apply flex-1 text-[13px] text-center font-roboto text-gray-400;
-      }
+    /* Slightly smaller text and tighter vertical padding to make it look compact */
+    p {
+      @apply flex-1 text-[13px] text-center font-roboto text-gray-400;
     }
   }
+}
 
   #dock {
     @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
