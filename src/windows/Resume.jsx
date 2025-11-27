@@ -2,6 +2,7 @@ import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import {WindowControls} from "#components/index.js";
 import {Download, ExternalLink} from "lucide-react";
 import {Document, Page, pdfjs} from 'react-pdf';
+import { useState } from 'react';
 
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -9,7 +10,12 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.vers
 
 
 const Resume = () => {
-    const filePath = "/files/resume.pdf";
+    const filePath = "https://danielwambua.dev/downloads/Daniel-Wambua-CV.pdf";
+    const [numPages, setNumPages] = useState(0);
+
+    const onDocumentLoadSuccess = ({ numPages }) => {
+        setNumPages(numPages || 0);
+    };
 
     const openInNewTab = () => {
         try {
@@ -75,11 +81,23 @@ const Resume = () => {
                 </div>
             </div>
 
-            <Document file={filePath}>
-                <Page pageNumber={1}
-                      renderTextLayer
-                      renderAnnotationLayer
-                />
+            <Document file={filePath} onLoadSuccess={onDocumentLoadSuccess}>
+                {numPages > 0
+                    ? Array.from({ length: numPages }, (_, i) => (
+                        <Page
+                            key={`page_${i + 1}`}
+                            pageNumber={i + 1}
+                            renderTextLayer
+                            renderAnnotationLayer
+                        />
+                    ))
+                    : (
+                        <Page
+                            pageNumber={1}
+                            renderTextLayer
+                            renderAnnotationLayer
+                        />
+                    )}
             </Document>
         </>
     );
