@@ -12,7 +12,8 @@ const Terminal = () => {
             </div>
             <div className= "techstack">
                 <p>
-                    <span className="font-bold">@daniel % </span>
+                    <span className="font-bold">daniel@macfolio-pro ~ 
+ </span>
                     show tech stack
                 </p>
 
@@ -37,9 +38,16 @@ const Terminal = () => {
                     ))}
                 </ul>
                 <div className="footnote">
+                    <p 
+                        onClick={() => window.open('https://danielwambua.dev/downloads/Daniel-Wambua-CV.pdf', '_blank')}
+                        className="cursor-pointer hover:text-blue-500 transition-colors"
+                    >
                     <p>
-                        <Check size={20} /> 5 of 5 stacks succesfully loaded (100%)
+                        <span>👉🏿</span> &nbsp; + many more tools and technologies
                     </p>
+                    </p>
+                        <span>👉🏿</span> &nbsp; 5 of 5 stacks succesfully loaded (100%)
+                    <br />&nbsp;
                     <p className = "text-black" >
                         <Flag size={15} fill="black" />
                         Render time 6ms

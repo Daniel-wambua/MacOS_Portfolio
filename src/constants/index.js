@@ -129,7 +129,7 @@ const techStack = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Hono"],
+    items: ["Node.js", "Express", "NestJS", "Django"],
   },
   {
     category: "Database",
@@ -138,6 +138,14 @@ const techStack = [
   {
     category: "Dev Tools",
     items: ["Git", "GitHub", "Docker"],
+  },
+  {
+    category: "Cloud",
+    items: ["AWS", "CI/CD", "Kubernetes"],
+  },
+  {
+    category: "Cybersecurity",
+    items: ["Burp Suite", "Wireshark", "Metasploit"],
   },
 ];
 
