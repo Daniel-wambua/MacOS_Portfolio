@@ -18,7 +18,7 @@ I built this so I never have to use a boring template portfolio again.
   <summary>About the Developer</summary>
 
 > **Professional Background**<br>
-> I'm an experienced, Principal-level full stack engineer with a passion for security, quality, performance, mentoring, technology and open source. I believe the best judge of a developer is their code, and while I cannot share proprietary work, I have many open source projects on my [GitHub](https://github.com/Daniel-wambua) and showcase my skills at [lab.havocsec.me](https://lab.havocsec.me).
+> I'm an aspiring security engineer with a passion for security, quality, performance, mentoring, technology and open source. I believe the best judge of a developer is their code, and while I cannot share proprietary work, I have many open source projects on my [GitHub](https://github.com/Daniel-wambua) and showcase my skills at [lab.havocsec.me](https://lab.havocsec.me).
 >
 > This portfolio project reflects my philosophy: why settle for generic when you can build something truly yours? I love automating, customizing, and making my work stand out.
 
