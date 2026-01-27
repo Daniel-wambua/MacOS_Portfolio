@@ -5,7 +5,7 @@
 <br />
 <i>A React web app with authentic macOS UI, gallery, and window management</i>
 <br />
-<b>🌐 <a href="https://portfolio.havocsec.me">portfolio.havocsec.me</a></b> <br />
+<b>🌐 <a href="https://macfolio.havocsec.me">macfolio.havocsec.me</a></b> <br />
 </p>
 
 
