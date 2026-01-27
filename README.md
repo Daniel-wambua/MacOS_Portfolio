@@ -45,7 +45,7 @@ Why? ...Because why spend 30 minutes on a template, when you could spend 30 hour
 ## Usage
 
 ### Option #1 - Online
-1. Visit <a href="https://portfolio.havocsec.me">portfolio.havocsec.me</a> to see the live portfolio.
+1. Visit <a href="https://macfolio.havocsec.me">macfolio.havocsec.me</a> to see the live portfolio.
 
 ### Option #2 - Local
 1. Clone the repo
