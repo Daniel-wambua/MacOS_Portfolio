@@ -81,28 +81,28 @@ const blogPosts = [
     title:
       "Hacking: Beyond the Hollywood Stereotype",
     image: "/images/hello.png",
-    link: "https://havocsec.me/blog/post6/",
+    link: "https://havocsec.dev/blog/post6/",
   },
   {
     id: 2,
     date: "june 17, 2025",
     title: "The 'Elite' Hacker Wannabes:Social Media Pressure",
     image: "/images/elite.png",
-    link: "https://havocsec.me/chitchat/chat1/",
+    link: "https://havocsec.dev/chitchat/chat1/",
   },
    {
     id: 3,
     date: "Aug 26, 2025",
     title: "The Good Side of Open Source: Why It Matters to You",
     image: "/images/good.png",
-    link: "https://havocsec.me/blog/post11/",
+    link: "https://havocsec.dev/blog/post11/",
   },
    {
     id: 4,
     date: "Jun 09, 2025",
     title: "Top 10 Real-World Exploits That Started as CTF Challenges",
     image: "/images/challs.png",
-    link: "https://havocsec.me/blog/post7/",
+    link: "https://havocsec.dev/blog/post7/",
   },
   
   {
@@ -110,7 +110,7 @@ const blogPosts = [
     date: "Nov 25, 2025",
     title: "my ctf journey writeups and pentesting writeups",
     image: "/images/ctfj.png",
-    link: "https://havocsec.me/pentesting/",
+    link: "https://havocsec.dev/pentesting/",
   },
 ];
 
@@ -162,7 +162,7 @@ const socials = [
     text: "Blog",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://havocsec.me",
+    link: "https://havocsec.dev",
   },
   {
     id: 3,
@@ -180,10 +180,10 @@ const socials = [
   },
   {
       id: 5,
-    text: "Linktree",
-    icon: "/icons/linktree.svg",
+    text: "Guns.lol",
+    icon: "/icons/guns.webp",
     bg: "#05f619ff",
-    link: "https://linktree.havocsec.me",
+    link: "https://guns.lol/0xhavoc",
   }
 ];
 
@@ -339,7 +339,7 @@ const WORK_LOCATION = {
           icon: "/images/cyberhub.svg",
           kind: "file",
           fileType: "url",
-          href: "https://cyberhub.havocsec.tech",
+          href: "https://cyberhub.havocsec.dev",
           position: "top-20 left-20",
         },
         {
