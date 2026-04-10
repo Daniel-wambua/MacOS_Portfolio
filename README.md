@@ -5,7 +5,7 @@
 <br />
 <i>A React web app with authentic macOS UI, gallery, and window management</i>
 <br />
-<b>🌐 <a href="https://macfolio.havocsec.me">macfolio.havocsec.me</a></b> <br />
+<b>🌐 <a href="https://macfolio.havocx.me">macfolio.havocx.me</a></b> <br />
 </p>
 
 
@@ -18,7 +18,7 @@ I built this so I never have to use a boring template portfolio again.
   <summary>About the Developer</summary>
 
 > **Professional Background**<br>
-> I'm an aspiring security engineer with a passion for security, quality, performance, mentoring, technology and open source. I believe the best judge of a developer is their code, and while I cannot share proprietary work, I have many open source projects on my [GitHub](https://github.com/Daniel-wambua) and showcase my skills at [lab.havocsec.me](https://lab.havocsec.me).
+> I'm an aspiring security engineer with a passion for security, quality, performance, mentoring, technology and open source. I believe the best judge of a developer is their code, and while I cannot share proprietary work, I have many open source projects on my [GitHub](https://github.com/Daniel-wambua) and showcase my skills at [lab.havocx.me](https://lab.havocx.me).
 >
 > This portfolio project reflects my philosophy: why settle for generic when you can build something truly yours? I love automating, customizing, and making my work stand out.
 
@@ -45,7 +45,7 @@ Why? ...Because why spend 30 minutes on a template, when you could spend 30 hour
 ## Usage
 
 ### Option #1 - Online
-1. Visit <a href="https://macfolio.havocsec.me">macfolio.havocsec.me</a> to see the live portfolio.
+1. Visit <a href="https://macfolio.havocx.me">macfolio.havocx.me</a> to see the live portfolio.
 
 ### Option #2 - Local
 1. Clone the repo
@@ -99,7 +99,7 @@ flowchart LR
 ## Screenshot
 
 <h3 align="center">Web 🌐</h3>
-<p align="center"><a href="https://portfolio.havocsec.me"><img width="650" src="public/images/preview.png" /></a></p>
+<p align="center"><a href="https://portfolio.havocx.me"><img width="650" src="public/images/preview.png" /></a></p>
 
 ---
 
@@ -121,7 +121,7 @@ This project uses the following open-source libraries and resources:
 
 ## License
 
-> _**[Daniel Wambua/macOS_portfolio](https://github.com/Daniel-wambua/macOS_portfolio)** is licensed under [MIT](https://github.com/Daniel-wambua/macOS_portfolio/blob/HEAD/LICENSE) © [Daniel Wambua](https://portfolio.havocsec.me) 2025._<br>
+> _**[Daniel Wambua/macOS_portfolio](https://github.com/Daniel-wambua/macOS_portfolio)** is licensed under [MIT](https://github.com/Daniel-wambua/macOS_portfolio/blob/HEAD/LICENSE) © [Daniel Wambua](https://portfolio.havocx.me) 2025._<br>
 > <sup align="right">For information, see <a href="https://tldrlegal.com/license/mit-license">TLDR Legal > MIT</a></sup>
 
 <details>
