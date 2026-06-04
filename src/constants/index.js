@@ -565,10 +565,10 @@ const WORK_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "->HackGraph is a visual attack surface mapping tool for security assessments.",
-            "->It graphs relationships between targets, vulnerabilities, and attack paths in an interactive node-based UI.",
-            "->Built for pentesters who think visually — map out your recon, track your progress, and identify blind spots.",
-            "->Turns messy engagement notes into a structured, navigable knowledge graph.",
+            "->HackGraph is a visual attack surface mapping tool.",
+            "->hackGraph helps you generate commits on your GitHub profile for any date",
+            "->Built for coders who think visually - and need to flood the activity graph in github.",
+            "->Whether you want to fill up your contribution graph or create cool designs, hackGraph makes it easy.",
           ],
         },
         {
