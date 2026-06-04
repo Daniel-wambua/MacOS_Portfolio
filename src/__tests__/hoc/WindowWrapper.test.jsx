@@ -91,7 +91,7 @@ describe('WindowWrapper HOC', () => {
       expect(windowElement).toHaveClass('shadow-lg');
     });
 
-    it('should have mobile-specific classes', () => {
+    it('should apply overflow auto style on desktop', () => {
       useWindowStore.mockReturnValue({
         focusWindow: mockFocusWindow,
         windows: {
@@ -103,9 +103,7 @@ describe('WindowWrapper HOC', () => {
       const { container } = render(<WrappedComponent />);
 
       const windowElement = container.querySelector('#testwindow');
-      expect(windowElement).toHaveClass('max-sm:fixed');
-      expect(windowElement).toHaveClass('max-sm:inset-0');
-      expect(windowElement).toHaveClass('max-sm:rounded-none');
+      expect(windowElement).toHaveStyle({ overflow: 'auto' });
     });
   });
 
@@ -233,8 +231,8 @@ describe('WindowWrapper HOC', () => {
     });
   });
 
-  describe('Safe Area Insets', () => {
-    it('should include safe area inset classes for mobile', () => {
+  describe('Window Element Type', () => {
+    it('should render as a section element', () => {
       useWindowStore.mockReturnValue({
         focusWindow: mockFocusWindow,
         windows: {
@@ -246,10 +244,7 @@ describe('WindowWrapper HOC', () => {
       const { container } = render(<WrappedComponent />);
 
       const windowElement = container.querySelector('#testwindow');
-      expect(windowElement.className).toContain('max-sm:pt-[env(safe-area-inset-top)]');
-      expect(windowElement.className).toContain('max-sm:pb-[env(safe-area-inset-bottom)]');
-      expect(windowElement.className).toContain('max-sm:pl-[env(safe-area-inset-left)]');
-      expect(windowElement.className).toContain('max-sm:pr-[env(safe-area-inset-right)]');
+      expect(windowElement.tagName).toBe('SECTION');
     });
   });
 });

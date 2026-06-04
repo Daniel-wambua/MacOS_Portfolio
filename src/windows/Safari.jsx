@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { WindowControls } from "#components/index.js";
 import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import { MoveRight, PanelLeft, ChevronLeft, ChevronRight, ShieldHalf, Search, Share, Plus, Copy } from "lucide-react";
@@ -16,6 +17,41 @@ const TouchButton = ({ ariaLabel, title, onClick, children }) => (
 );
 
 const Safari = () => {
+    const [posts, setPosts] = useState(null);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        async function fetchFeed() {
+            try {
+                const res = await fetch("/api/feed");
+                if (!res.ok) throw new Error("Feed fetch failed");
+                const data = await res.json();
+                if (!cancelled && data.items) {
+                    setPosts(data.items);
+                }
+            } catch {
+                // Fall back to hardcoded blog posts
+                if (!cancelled) setError(true);
+            }
+        }
+
+        fetchFeed();
+        return () => { cancelled = true; };
+    }, []);
+
+    // Use RSS posts if available, otherwise fall back to hardcoded
+    const displayPosts = posts
+        ? posts.map((item, i) => ({
+            id: i + 1,
+            title: item.title,
+            date: item.pubDate ? new Date(item.pubDate).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "",
+            image: item.image || "/images/hello.png",
+            link: item.link,
+        }))
+        : blogPosts;
+
     return (
         <>
             <div id="window-header">
@@ -55,11 +91,14 @@ const Safari = () => {
 
             <div className="blog">
                 <h2>My blog</h2>
+                {!posts && !error && (
+                    <p style={{ textAlign: "center", color: "#888", padding: "20px 0" }}>Loading articles...</p>
+                )}
                 <div className="space-y-8">
-                    {blogPosts.map(({ id, image, title, date, link }) => (
+                    {displayPosts.map(({ id, image, title, date, link }) => (
                         <div key={id} className="blog-post">
                             <div className="col-span-2">
-                                <img src={image} alt={title} />
+                                <img src={image} alt={title} onError={(e) => { e.target.src = "/images/hello.png"; }} />
                             </div>
                             <div className="content">
                                 <p>{date}</p>

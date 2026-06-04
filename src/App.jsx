@@ -4,17 +4,41 @@ import { useEffect, useRef } from "react";
 
 import {Navbar,Welcome,Dock,Home} from "#components";
 import Toasts from "#components/Toasts.jsx";
+import SpotlightModal from "#components/SpotlightModal.jsx";
+import BootScreen from "#components/BootScreen.jsx";
+import LoginScreen from "#components/LoginScreen.jsx";
 import {Finder, Resume, Safari, Terminal, Text, Image, Contact, Photos} from "#windows";
 import useWindowStore from "#store/window.js";
+import useBootStore from "#store/boot.js";
+import useThemeStore from "#store/theme.js";
+import useKeyboardShortcuts from "./hooks/useKeyboardShortcuts.js";
 
 gsap.registerPlugin(Draggable);
 
 const App = () => {
   const { windows } = useWindowStore();
   const anyOpen = Object.values(windows).some((w) => w?.isOpen);
+  const phase = useBootStore((s) => s.phase);
+  const mainRef = useRef(null);
   // Refs to rate-limit repeated toasts
   const lastContextToastRef = useRef(0);
   const lastDevtoolsToastRef = useRef(0);
+
+  // Register global keyboard shortcuts (Cmd/Ctrl+W, 1, 2, 3, K)
+  useKeyboardShortcuts();
+
+  // Initialize boot sequence on mount
+  useEffect(() => {
+    useBootStore.getState().initBoot();
+    useThemeStore.getState().init();
+  }, []);
+
+  // Focus main content for screen readers when boot/login sequence completes
+  useEffect(() => {
+    if (phase === 'done' && mainRef.current) {
+      mainRef.current.focus();
+    }
+  }, [phase]);
 
   const showToast = (message) => {
     if (typeof window === 'undefined') return;
@@ -120,7 +144,10 @@ const App = () => {
   }, []);
 
   return (
-   <main>
+   <>
+   <BootScreen />
+   <LoginScreen />
+   <main ref={mainRef} tabIndex={-1}>
     <Toasts />
     <Navbar />
     <Welcome />
@@ -136,6 +163,9 @@ const App = () => {
        <Photos />
        <Home />
     </main>
+
+    <SpotlightModal />
+    </>
   );
 };
 

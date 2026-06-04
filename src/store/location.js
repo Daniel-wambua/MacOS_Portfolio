@@ -9,8 +9,8 @@ const useLocationStore = create(immer((set) => ({
 
     setActiveLocation: (location) =>
         set((state) => {
-            if (location === undefined) return;
-        state.activeLocation = location;
+            if (!location || typeof location !== 'object' || Object.keys(location).length === 0) return;
+            state.activeLocation = location;
     }),
 
     resetActiveLocation: () =>

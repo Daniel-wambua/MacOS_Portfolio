@@ -19,61 +19,70 @@ describe('Welcome Component', () => {
 
   it('should render welcome message', () => {
     render(<Welcome />);
-    expect(screen.getByText(/Hey,I'm Daniel!/i)).toBeInTheDocument();
-    expect(screen.getByText(/Welcome to my/i)).toBeInTheDocument();
+    // The text is rendered as individual character spans via renderText()
+    // The section contains the mobile notice plus the subtitle spans
+    const section = document.querySelector('#welcome');
+    expect(section).toBeInTheDocument();
+    // Check for individual span characters that make up the greeting
+    const spans = section.querySelectorAll('span.text-3xl');
+    expect(spans.length).toBeGreaterThan(0);
+    // Collect text from subtitle spans
+    const subtitleText = Array.from(spans).map(s => s.textContent === '\u00A0' ? ' ' : s.textContent).join('');
+    expect(subtitleText).toContain("Hey,I'm Daniel");
+    expect(subtitleText).toContain("Welcome to my");
   });
 
   it('should render Portfolio heading', () => {
     render(<Welcome />);
-    expect(screen.getByText('Portfolio')).toBeInTheDocument();
+    const section = document.querySelector('#welcome');
+    expect(section.textContent).toContain('Portfolio');
   });
 
-  it('should render mobile helper text', () => {
+  it('should render h1 element for Portfolio', () => {
     render(<Welcome />);
-    expect(screen.getByText(/Tip: On phones, apps open full-screen/i)).toBeInTheDocument();
+    const heading = document.querySelector('h1');
+    expect(heading).toBeInTheDocument();
+    expect(heading.textContent).toContain('Portfolio');
   });
 
-  it('should render quick action buttons', () => {
+  it('should render mobile notice text', () => {
     render(<Welcome />);
-    expect(screen.getByText('Open Tech Stack')).toBeInTheDocument();
-    expect(screen.getByText('Open Resume')).toBeInTheDocument();
-  });
-
-  it('should open terminal when Tech Stack button is clicked', () => {
-    render(<Welcome />);
-    const button = screen.getByText('Open Tech Stack');
-    button.click();
-    expect(mockOpenWindow).toHaveBeenCalledWith('terminal');
-  });
-
-  it('should open resume when Resume button is clicked', () => {
-    render(<Welcome />);
-    const button = screen.getByText('Open Resume');
-    button.click();
-    expect(mockOpenWindow).toHaveBeenCalledWith('resume');
-  });
-
-  it('should have proper accessibility labels', () => {
-    render(<Welcome />);
-    const techStackButton = screen.getByLabelText('Open Tech Stack');
-    const resumeButton = screen.getByLabelText('Open Resume');
-    expect(techStackButton).toBeInTheDocument();
-    expect(resumeButton).toBeInTheDocument();
-  });
-
-  it('should have mobile-specific styling', () => {
-    render(<Welcome />);
-    const section = screen.getByText('Portfolio').closest('section');
-    expect(section).toHaveClass('max-sm:pt-10');
-    expect(section).toHaveClass('max-sm:px-2');
+    expect(screen.getByText(/This PortFolio is designed for Desktop\/Tablet screens only/i)).toBeInTheDocument();
   });
 
   it('should render text with proper font styles', () => {
     render(<Welcome />);
-    const subtitle = screen.getByText(/Hey,I'm Daniel!/i).closest('p');
-    expect(subtitle).toHaveClass('max-sm:text-lg');
-    
-    const title = screen.getByText('Portfolio').closest('h1');
-    expect(title).toHaveClass('max-sm:text-5xl');
+    const heading = document.querySelector('h1');
+    expect(heading).toHaveClass('max-sm:text-5xl');
+  });
+
+  it('should have section with welcome id', () => {
+    render(<Welcome />);
+    const section = document.querySelector('#welcome');
+    expect(section).toBeInTheDocument();
+    expect(section.tagName).toBe('SECTION');
+  });
+
+  it('should render subtitle paragraph', () => {
+    render(<Welcome />);
+    const section = document.querySelector('#welcome');
+    // The subtitle paragraph has the max-sm:text-lg class directly
+    // Skip the mobile notice paragraphs and find the subtitle by its ref-based structure
+    const subtitleP = section.querySelector('p.max-sm\\:text-lg');
+    expect(subtitleP).toBeInTheDocument();
+  });
+
+  it('should render individual character spans', () => {
+    render(<Welcome />);
+    const spans = document.querySelectorAll('span.font-georama');
+    expect(spans.length).toBeGreaterThan(0);
+  });
+
+  it('should apply font variation settings to text spans', () => {
+    render(<Welcome />);
+    const spans = document.querySelectorAll('span.font-georama');
+    spans.forEach(span => {
+      expect(span.style.fontVariationSettings).toBeTruthy();
+    });
   });
 });

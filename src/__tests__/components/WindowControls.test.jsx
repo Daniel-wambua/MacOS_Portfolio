@@ -10,11 +10,14 @@ vi.mock('../../store/window.js', () => ({
 
 describe('WindowControls Component', () => {
   let mockCloseWindow;
+  let mockMinimizeWindow;
 
   beforeEach(() => {
     mockCloseWindow = vi.fn();
+    mockMinimizeWindow = vi.fn();
     useWindowStore.mockReturnValue({
       closeWindow: mockCloseWindow,
+      minimizeWindow: mockMinimizeWindow,
     });
   });
 
@@ -30,16 +33,19 @@ describe('WindowControls Component', () => {
     
     const closeButton = screen.getByLabelText('Close');
     expect(closeButton).toBeInTheDocument();
-    expect(closeButton).toHaveClass('bg-[#ff5f56]');
+    // The color class is on the inner span, not the button itself
+    const span = closeButton.querySelector('span');
+    expect(span).toHaveClass('bg-[#ff5f56]');
   });
 
-  it('should render minimize button (decorative)', () => {
+  it('should render minimize button as functional', () => {
     render(<WindowControls target="finder" />);
     
-    const minimizeButton = screen.getByLabelText('Minimize (decorative)');
+    const minimizeButton = screen.getByLabelText('Minimize');
     expect(minimizeButton).toBeInTheDocument();
-    expect(minimizeButton).toHaveClass('bg-[#ffbd2e]');
-    expect(minimizeButton).toBeDisabled();
+    const span = minimizeButton.querySelector('span');
+    expect(span).toHaveClass('bg-[#ffbd2e]');
+    expect(minimizeButton).not.toBeDisabled();
   });
 
   it('should render maximize button (decorative)', () => {
@@ -47,7 +53,8 @@ describe('WindowControls Component', () => {
     
     const maximizeButton = screen.getByLabelText('Maximize (decorative)');
     expect(maximizeButton).toBeInTheDocument();
-    expect(maximizeButton).toHaveClass('bg-[#27c93f]');
+    const span = maximizeButton.querySelector('span');
+    expect(span).toHaveClass('bg-[#27c93f]');
     expect(maximizeButton).toBeDisabled();
   });
 
@@ -79,7 +86,7 @@ describe('WindowControls Component', () => {
     render(<WindowControls target="finder" />);
     
     expect(screen.getByLabelText('Close')).toBeInTheDocument();
-    expect(screen.getByLabelText('Minimize (decorative)')).toBeInTheDocument();
+    expect(screen.getByLabelText('Minimize')).toBeInTheDocument();
     expect(screen.getByLabelText('Maximize (decorative)')).toBeInTheDocument();
   });
 
@@ -87,22 +94,19 @@ describe('WindowControls Component', () => {
     render(<WindowControls target="finder" />);
     
     const buttons = screen.getAllByRole('button');
-    expect(buttons[0]).toHaveClass('bg-[#ff5f56]'); // red
-    expect(buttons[1]).toHaveClass('bg-[#ffbd2e]'); // yellow
-    expect(buttons[2]).toHaveClass('bg-[#27c93f]'); // green
+    // Colors are on inner spans
+    expect(buttons[0].querySelector('span')).toHaveClass('bg-[#ff5f56]'); // red
+    expect(buttons[1].querySelector('span')).toHaveClass('bg-[#ffbd2e]'); // yellow
+    expect(buttons[2].querySelector('span')).toHaveClass('bg-[#27c93f]'); // green
   });
 
-  it('should not propagate events from decorative buttons', () => {
+  it('should call minimizeWindow when minimize button is clicked', () => {
     render(<WindowControls target="finder" />);
     
-    const minimizeButton = screen.getByLabelText('Minimize (decorative)');
-    const maximizeButton = screen.getByLabelText('Maximize (decorative)');
-    
-    // These should not trigger any action
+    const minimizeButton = screen.getByLabelText('Minimize');
     fireEvent.click(minimizeButton);
-    fireEvent.click(maximizeButton);
     
-    expect(mockCloseWindow).not.toHaveBeenCalled();
+    expect(mockMinimizeWindow).toHaveBeenCalledWith('finder');
   });
 
   it('should have hover and active states', () => {
@@ -117,7 +121,9 @@ describe('WindowControls Component', () => {
     
     const buttons = screen.getAllByRole('button');
     buttons.forEach(button => {
-      expect(button).toHaveClass('rounded-full');
+      // The rounded-full class is on the inner span
+      const span = button.querySelector('span');
+      expect(span).toHaveClass('rounded-full');
     });
   });
 });

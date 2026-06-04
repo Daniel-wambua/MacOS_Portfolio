@@ -369,7 +369,7 @@ describe('Constants - Data Integrity', () => {
       ];
       
       allIconPaths.forEach(path => {
-        expect(path).toMatch(/^\/?(icons?|images)\/.+\.(svg|png|jpg|jpeg)$/i);
+        expect(path).toMatch(/^\/?(icons?|images)\/.+\.(svg|png|jpg|jpeg|webp)$/i);
       });
     });
   });

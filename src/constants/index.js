@@ -263,8 +263,8 @@ const WORK_LOCATION = {
       name: "Nike Ecommerce Website Application",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      position: "top-5 left-5",
+      windowPosition: "top-[60px] left-[20px]",
       children: [
         {
           id: 1,
@@ -316,8 +316,8 @@ const WORK_LOCATION = {
       name: "CyberHub",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-52 right-80",
-      windowPosition: "top-[20vh] left-7",
+      position: "top-5 left-[200px]",
+      windowPosition: "top-[170px] left-[20px]",
       children: [
         {
           id: 1,
@@ -369,8 +369,8 @@ const WORK_LOCATION = {
       name: "Havoc_Linktree",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-80",
-      windowPosition: "top-[33vh] left-7",
+      position: "top-5 left-[395px]",
+      windowPosition: "top-[280px] left-[20px]",
       children: [
         {
           id: 1,
@@ -412,6 +412,182 @@ const WORK_LOCATION = {
           fileType: "fig",
           href: "https://linktree.havocsec.me",
           position: "top-60 right-20",
+        },
+      ],
+    },
+
+    // ▶ Project 4
+    {
+      id: 8,
+      name: "Docker Scanner",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-[120px] left-5",
+      windowPosition: "top-[390px] left-[20px]",
+      children: [
+        {
+          id: 1,
+          name: "Docker Scanner.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "->A minimal, production-ready security scanner for Docker & containers.",
+            "->Scans images and running containers for known vulnerabilities, misconfigurations, and exposed secrets.",
+            "->Built with Python, it integrates into CI/CD pipelines to catch issues before deployment.",
+            "->Think of it as your container security linter — fast, automated, and opinionated about best practices.",
+          ],
+        },
+        {
+          id: 2,
+          name: "docker-scanner",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://github.com/Daniel-wambua/docker-scanner",
+          position: "top-10 right-20",
+        },
+        {
+          id: 5,
+          name: "Source.fig",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://github.com/Daniel-wambua/docker-scanner",
+          position: "top-60 left-5",
+        },
+      ],
+    },
+
+    // ▶ Project 5
+    {
+      id: 9,
+      name: "Datapulse",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-[120px] left-[200px]",
+      windowPosition: "top-[500px] left-[20px]",
+      children: [
+        {
+          id: 1,
+          name: "Datapulse.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "->A comprehensive, production-ready dashboard that aggregates and visualizes real-time data from multiple public APIs.",
+            "->Built with Python, it pulls live data streams and renders them into clean, actionable visualizations.",
+            "->Designed for monitoring, analysis, and situational awareness — all in one unified interface.",
+            "->No fluff, no dashboards-for-the-sake-of-dashboards. Just useful data, displayed cleanly.",
+          ],
+        },
+        {
+          id: 2,
+          name: "datapulse",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://github.com/Daniel-wambua/Datapulse",
+          position: "top-10 right-20",
+        },
+        {
+          id: 5,
+          name: "Source.fig",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://github.com/Daniel-wambua/Datapulse",
+          position: "top-60 left-5",
+        },
+      ],
+    },
+
+    // ▶ Project 6
+    {
+      id: 10,
+      name: "Project Lab",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-[120px] left-[395px]",
+      windowPosition: "top-[60px] left-[120px]",
+      children: [
+        {
+          id: 1,
+          name: "Project Lab.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "->A personal projects lab for showcasing projects created along the way.",
+            "->Built with TypeScript, it serves as a curated portfolio of experimental and production-level work.",
+            "->Each project includes documentation, live demos, and source code.",
+            "->It's the playground where ideas go from concept to deployed reality.",
+          ],
+        },
+        {
+          id: 2,
+          name: "project-lab",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://github.com/Daniel-wambua/project-lab",
+          position: "top-10 right-20",
+        },
+        {
+          id: 5,
+          name: "Source.fig",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://github.com/Daniel-wambua/project-lab",
+          position: "top-60 left-5",
+        },
+      ],
+    },
+
+    // ▶ Project 7
+    {
+      id: 11,
+      name: "HackGraph",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-[235px] left-5",
+      windowPosition: "top-[170px] left-[120px]",
+      children: [
+        {
+          id: 1,
+          name: "HackGraph.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "->HackGraph is a visual attack surface mapping tool for security assessments.",
+            "->It graphs relationships between targets, vulnerabilities, and attack paths in an interactive node-based UI.",
+            "->Built for pentesters who think visually — map out your recon, track your progress, and identify blind spots.",
+            "->Turns messy engagement notes into a structured, navigable knowledge graph.",
+          ],
+        },
+        {
+          id: 2,
+          name: "hackgraph",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://github.com/Daniel-wambua/hackGraph",
+          position: "top-10 right-20",
+        },
+        {
+          id: 5,
+          name: "Source.fig",
+          icon: "/images/plain.png",
+          kind: "file",
+          fileType: "fig",
+          href: "https://github.com/Daniel-wambua/hackGraph",
+          position: "top-60 left-5",
         },
       ],
     },
@@ -529,14 +705,14 @@ export const locations = {
 const INITIAL_Z_INDEX = 1000;
 
 const WINDOW_CONFIG = {
-  finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
-  imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  finder: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  contact: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  resume: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  safari: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  photos: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  terminal: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  txtfile: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
+  imgfile: { isOpen: false, isMinimized: false, zIndex: INITIAL_Z_INDEX, data: null, lastPosition: null, lastSize: null },
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };

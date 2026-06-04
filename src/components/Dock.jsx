@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { Tooltip } from "react-tooltip";
 import { dockApps } from "#constants";
 import { useGSAP } from "@gsap/react";
@@ -6,8 +6,11 @@ import gsap from "gsap";
 import useWindowStore from "#store/window.js";
 
 const Dock = () => {
-    const { openWindow , closeWindow, windows } = useWindowStore();
+    const { openWindow , closeWindow, restoreWindow, windows } = useWindowStore();
     const dockRef = useRef(null);
+    const isAnimating = useRef({});
+    const isRestoring = useRef({});
+    const iconRefs = useRef({});
 
   useGSAP(() => {
     const dock =dockRef.current;
@@ -57,20 +60,53 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = (app) => {
-  //TODO Implement Open Window Logic
+  const toggleApp = useCallback((app) => {
     if (!app.canOpen) return;
 
     const win = windows[app.id];
     if (!win) return;
 
+    // Prevent duplicate animations
+    if (isAnimating.current[app.id]) return;
+
+    if (win.isMinimized) {
+      // Prevent duplicate restore clicks during animation
+      if (isRestoring.current[app.id]) return;
+      isRestoring.current[app.id] = true;
+
+      // Restore the window in the store (sets isMinimized=false, isOpen=true)
+      restoreWindow(app.id);
+
+      // Reset the restoring flag after the 400ms restore animation completes
+      setTimeout(() => {
+        isRestoring.current[app.id] = false;
+      }, 400);
+      return;
+    }
+
     if (win.isOpen) {
-        closeWindow(app.id);
+      closeWindow(app.id);
     } else {
-            openWindow(app.id);
-        }
-        console.log(win);
-    };
+      // App is NOT open and NOT minimized — play bounce and open immediately
+      isAnimating.current[app.id] = true;
+      openWindow(app.id);
+
+      const iconEl = iconRefs.current[app.id];
+      if (iconEl) {
+        const tl = gsap.timeline({
+          onComplete: () => {
+            isAnimating.current[app.id] = false;
+          },
+        });
+        tl.to(iconEl, { y: '-=30', duration: 0.15, ease: 'power1.out' })
+          .to(iconEl, { y: '+=30', duration: 0.15, ease: 'power1.in' })
+          .to(iconEl, { y: '-=15', duration: 0.15, ease: 'power1.out' })
+          .to(iconEl, { y: '+=15', duration: 0.15, ease: 'power1.in' });
+      } else {
+        isAnimating.current[app.id] = false;
+      }
+    }
+  }, [windows, openWindow, closeWindow, restoreWindow]);
 
 
   return (
@@ -85,13 +121,15 @@ const Dock = () => {
       >
         {dockApps.map(({ id, name, icon, canOpen }) => {
           const win = windows[id];
-          const isActive = win?.isOpen;
+          const isActive = win?.isOpen || win?.isMinimized;
           return (
             <div key={id} className="relative flex justify-center">
               <button
                 type="button"
                 className="dock-icon"
+                ref={(el) => { iconRefs.current[id] = el; }}
                 aria-label={name}
+                data-app-id={id}
                 data-tooltip-id="dock-tooltip"
                 data-tooltip-content={name}
                 data-tooltip-delay-show={150}
@@ -105,7 +143,7 @@ const Dock = () => {
                   className={canOpen ? "" : "opacity-60"}
                 />
               </button>
-              {/* Show dot only if open */}
+              {/* Show dot when app is open or minimized */}
               {canOpen && (
                 <span
                   className={`absolute left-1/2 -translate-x-1/2 bottom-0 mb-1 w-2 h-2 rounded-full transition-all

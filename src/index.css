@@ -11,6 +11,108 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  transition: background-color 0.3s;
+}
+
+html.dark body {
+  background-image: url("/images/wallpaper.png");
+  filter: brightness(0.7);
+}
+
+html.dark nav {
+  background: rgba(30, 30, 30, 0.7) !important;
+  color: white;
+}
+
+html.dark nav time {
+  color: white;
+}
+
+html.dark nav p,
+html.dark nav ul p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+html.dark nav img.icon-hover {
+  filter: invert(1);
+}
+
+html.dark #window-header {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #aaa;
+}
+
+html.dark #window-header h2 {
+  color: #ccc;
+}
+
+html.dark section.bg-white {
+  background: #1e1e1e !important;
+  color: #e0e0e0;
+}
+
+html.dark .bg-white {
+  background: #1e1e1e !important;
+  color: #e0e0e0;
+}
+
+html.dark .bg-gray-50 {
+  background: #252525 !important;
+}
+
+html.dark .text-gray-800,
+html.dark .text-gray-700 {
+  color: #e0e0e0 !important;
+}
+
+html.dark .text-gray-500,
+html.dark .text-gray-400 {
+  color: #888 !important;
+}
+
+html.dark .border-gray-200,
+html.dark .border-gray-100 {
+  border-color: #333 !important;
+}
+
+html.dark #dock .dock-container {
+  background: rgba(30, 30, 30, 0.6);
+}
+
+html.dark .blog h2 {
+  color: #ff6b9d;
+}
+
+html.dark .blog .content h3 {
+  color: #e0e0e0;
+}
+
+html.dark .blog .content a {
+  color: #64b5f6;
+}
+
+html.dark .techstack {
+  color: #ccc;
+}
+
+html.dark #finder .sidebar {
+  background: #1a1a1a !important;
+  border-color: #333 !important;
+}
+
+html.dark #finder .content {
+  background: #242424 !important;
+}
+
+html.dark #finder .sidebar ul .active {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #64b5f6 !important;
+}
+
+html.dark #photos .sidebar {
+  background: #1a1a1a !important;
+  border-color: #333 !important;
 }
 
 @theme {
@@ -123,7 +225,7 @@ body {
   }
 
   #safari {
-    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-4xl w-full bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .search {
       @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
@@ -167,7 +269,7 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-xl w-full bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -213,7 +315,7 @@ body {
   }
 
   #contact {
-    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-2xl w-full bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -241,7 +343,7 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl w-full bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .sidebar {
       @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
@@ -301,7 +403,7 @@ body {
   }
 
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-fit h-fit bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       h2 {
@@ -311,7 +413,7 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply w-full max-w-3xl shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
 
     .sidebar {
       @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
@@ -355,7 +457,7 @@ body {
   }
 
   #txtfile {
-    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-md w-full bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -363,7 +465,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-xl w-full bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       p {
