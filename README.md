@@ -11,22 +11,22 @@
 ## Features
 
 ### Desktop Experience
-- **Boot & Login Screen** — macOS-style boot animation with Apple logo, progress bar, and login screen showing username "havoc"
-- **Window Management** — Draggable, resizable windows with minimize-to-dock animation and restore
-- **Dock** — Proximity magnification on hover, bounce animation on app launch, dot indicators for open/minimized apps
-- **Keyboard Shortcuts** — `Ctrl/⌘+W` close window, `Ctrl/⌘+1/2/3` open apps, `Ctrl/⌘+K` Spotlight search
-- **Spotlight Search** — Fuzzy search modal to quickly find and open any window or section
-- **Control Center** — Notification panel, dark mode toggle, quick links, now playing widget
-- **Owner Details** — Profile dropdown with social links from the topbar user icon
-- **Dark Mode** — Full site dark mode toggle with localStorage persistence
+- **Boot & Login Screen** - macOS-style boot animation with Apple logo, progress bar, and login screen showing username "havoc"
+- **Window Management** - Draggable, resizable windows with minimize-to-dock animation and restore
+- **Dock** - Proximity magnification on hover, bounce animation on app launch, dot indicators for open/minimized apps
+- **Keyboard Shortcuts** - `Ctrl/⌘+W` close window, `Ctrl/⌘+1/2/3` open apps, `Ctrl/⌘+K` Spotlight search
+- **Spotlight Search** - Fuzzy search modal to quickly find and open any window or section
+- **Control Center** - Notification panel, dark mode toggle, quick links, now playing widget
+- **Owner Details** - Profile dropdown with social links from the topbar user icon
+- **Dark Mode** - Full site dark mode toggle with localStorage persistence
 
 ### Content
-- **Articles (Safari)** — Live blog posts fetched from RSS feed (`havocsec.dev/rss.xml`), auto-updates without redeployment
-- **Projects (Finder)** — 7 project folders with descriptions, links, and screenshots
-- **Tech Stack (Terminal)** — Interactive terminal-style skills display
-- **Photo Gallery** — Multi-category photo gallery with sidebar filtering
-- **Contact** — Social links with Linktree integration
-- **Resume** — PDF viewer for CV
+- **Articles (Safari)** - Live blog posts fetched from RSS feed (`havocsec.dev/rss.xml`), auto-updates without redeployment
+- **Projects (Finder)** - 7 project folders with descriptions, links, and screenshots
+- **Tech Stack (Terminal)** - Interactive terminal-style skills display
+- **Photo Gallery** - Multi-category photo gallery with sidebar filtering
+- **Contact** - Social links with Linktree integration
+- **Resume** - PDF viewer for CV
 
 ### Technical
 - React + Vite
